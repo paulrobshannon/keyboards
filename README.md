@@ -1,2 +1,2 @@
-# keyboards layouts
+# keyboard layouts
 jsons for qmk configurator
