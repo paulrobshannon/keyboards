@@ -7,21 +7,11 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _DEVSET,
-  _MEDIA,
-  _MURP
+  _MEDIA
 };
 
 enum custom_keycodes {
-  APW = SAFE_RANGE,
-  AG,
-  BARS,
-  COT,
-  DWNLD,
-  MARK,
-  OMW,
-  PLAN,
-  SEDO,
-  TURKEY
+  APW
 };
 
 
@@ -30,11 +20,9 @@ enum custom_keycodes {
 #define _RAISE  2
 #define _DEVSET 3
 #define _MEDIA  4
-#define _MURP   5
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
-#define NIAMH MO(_MURP)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -73,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MEDIA,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,  KC_9,    KC_0,    KC_BSPC, 
     _______, _______, _______, _______, _______, _______, _______, KC_P4,   KC_P5, KC_P6,   _______, _______, 
     _______, _______, _______, _______, _______, _______, _______, KC_P1,   KC_P2, KC_P3,   _______, _______, 
-    NIAMH,   _______, _______, _______, _______, _______, _______, _______, KC_P0, _______, _______, _______
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_P0, _______, _______, _______
 ),
 
 
@@ -131,26 +119,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_VOLD,    KC_VOLU,  KC_MUTE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_BRID,    KC_BRIU,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP, KC_MS_RIGHT
-),
-
-/* Niamh Murphy Layer
-*
-* ,-----------------------------------------------------------------------------------.
-* |      |      |      |      | Plan |      |      |      |      |      |      |      |
-* |------+------+------+------+------+------+------+------+------+------+------+------|
-* |      |  AG  |      | Sedo |Turkey| BD   |      |      |      |      | OMW! |      |
-* |------+------+------+------+------+------+------+------+------+------+------+------|
-* |      |      |      | COT  |      | bars |      | Mark |      |      |      |      |
-* |------+------+------+------+------+------+------+------+------+------+------+------|
-* |      |      |      |      |      |      |      |      |      |      |      |      |
-* `-----------------------------------------------------------------------------------'
-*/
-
-[_MURP] = LAYOUT_planck_grid(
-    _______, _______, _______, _______, PLAN,    _______, _______, _______, _______,  _______, _______, _______,
-    _______, AG,      _______, SEDO,    TURKEY,  DWNLD,   _______, _______, _______,  _______, OMW,     _______,
-    _______, _______, _______, COT,     _______, BARS,    _______, MARK,    _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 )
 
 };
@@ -162,77 +130,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case APW:
         if (record->event.pressed) {
             // when keycode APW is pressed
-            SEND_STRING("whatthefuckisgoingonwithmycomputer");
-            return false;
+            SEND_STRING("youknowwhatthisis!");
         } else {
             // when keycode APW is released
             // N O T H I N G
         }
         break;
-
-    case PLAN:
-        if (record->event.pressed) {
-            // when keycode PLAN is pressed
-            SEND_STRING("Plannnnnn!!");
-            return false;
-        } 
-        break;
-
-    case BARS:
-        if (record->event.pressed) {
-            SEND_STRING("bars");
-            return false;
-        }
-        break;
-
-    case OMW:
-        if (record->event.pressed) {
-            SEND_STRING("Oh my word!!");
-            return false;
-        }
-        break;
-
-    case SEDO:
-        if (record->event.pressed) {
-            SEND_STRING("You know Sedo,");
-            return false;
-        }
-        break;
-
-    case MARK:
-        if (record->event.pressed) {
-            SEND_STRING("You know Mark Huber,");
-            return false;
-        }
-        break;
-
-    case AG:
-        if (record->event.pressed) {
-            SEND_STRING("Al Gelato?");
-            return false;
-        }
-        break;
-
-    case COT:
-        if (record->event.pressed) {
-            SEND_STRING("claims on tour");
-            return false;
-        }
-        break;
-
-    case DWNLD:
-        if (record->event.pressed) {
-            SEND_STRING("Banter Download");
-            return false;
-        }
-        break; 
-
-    case TURKEY:
-        if (record->event.pressed) {
-            SEND_STRING("such a turkey like");
-            return false;
-        }
-        break; 
     }
     return true;
 };
@@ -243,6 +146,3 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 }
 
-
-
- 
