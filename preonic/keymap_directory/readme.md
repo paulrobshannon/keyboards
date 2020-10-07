@@ -1,2 +1,2 @@
-# My Current Custom Planck Layout
+# My Current Custom Preonic Layout
 
