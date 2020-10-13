@@ -12,20 +12,15 @@ enum planck_layers {
 };
 
 enum custom_keycodes {
-  APW = SAFE_RANGE,
-  COLEMAK,
-  RSTHD
+  APW
 };
 
 
-// #define _BL     0
-// #define _LOWER  1
-// #define _RAISE  2
-// #define _DEVSET 3
-// #define _MEDIA  4
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
+#define RSTHD DF(_RSTHD)
+#define COLMK DF(_BL)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -100,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_DEVSET] = LAYOUT_planck_grid(
     _______, RESET,   DEBUG,   _______, APW,     _______, _______, _______, _______,  _______, _______, _______,
-    _______, _______, _______, _______, COLEMAK, _______, _______, RSTHD,   _______,  _______, _______, _______,
+    _______, _______, _______, _______, COLMK,   _______, _______, RSTHD,   _______,  _______, _______, _______,
     _______, _______, _______,  MU_ON,  MU_OFF,  _______, _______, _______, _______,  _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 ),
@@ -152,19 +147,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           // when keycode APW is pressed
           SEND_STRING("youknowwhatthisis!");
       }
-      return false;
-      break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_BL);
-      }
-      return false;
-      break;
-    case RSTHD:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_RSTHD);
-      }
-      return false;
       break;
   }
   return true;
