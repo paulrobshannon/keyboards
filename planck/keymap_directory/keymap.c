@@ -7,19 +7,22 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _DEVSET,
-  _MEDIA
+  _MEDIA,
+  _RSTHD
 };
 
 enum custom_keycodes {
-  APW
+  APW = SAFE_RANGE,
+  COLEMAK,
+  RSTHD
 };
 
 
-#define _BL     0
-#define _LOWER  1
-#define _RAISE  2
-#define _DEVSET 3
-#define _MEDIA  4
+// #define _BL     0
+// #define _LOWER  1
+// #define _RAISE  2
+// #define _DEVSET 3
+// #define _MEDIA  4
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
@@ -88,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |Reset |Debug |      | APW  |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |COLEMK|      |      |RSTHD |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |Mus on|Musoff|      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -97,8 +100,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_DEVSET] = LAYOUT_planck_grid(
     _______, RESET,   DEBUG,   _______, APW,     _______, _______, _______, _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
-    _______, _______, _______,  MU_ON,   MU_OFF, _______, _______, _______, _______,  _______, _______, _______,
+    _______, _______, _______, _______, COLEMAK, _______, _______, RSTHD,   _______,  _______, _______, _______,
+    _______, _______, _______,  MU_ON,  MU_OFF,  _______, _______, _______, _______,  _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 ),
 
@@ -119,26 +122,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_VOLD,    KC_VOLU,  KC_MUTE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_BRID,    KC_BRIU,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP, KC_MS_RIGHT
+),
+
+/* RSTHD Layer :S
+ * ,-----------------------------------------------------------------------------------.
+ * | Tab  |   J  |   C  |   Y  |   F  |   K  |   Z  |   L  |   ,  |   U  |   Q  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Bksp |   R  |   S  |   T  |   H  |   D  |   M  |   N  |   A  |   I  |   O  |  "   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|   /  |   V  |   G  |   P  |   B  |   X  |   W  |   .  |   ;  |   -  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  | Ctrl | Alt  | GUI  |Lower |   E  |Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_RSTHD] = LAYOUT_planck_grid(
+    KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_BSPC,
+    KC_BSPC, KC_R,    KC_S,    KC_T,    KC_H,    KC_D,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT,
+    KC_LSFT, KC_SLSH, KC_V,    KC_G,    KC_P,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_SCLN, KC_MINS, KC_ENT ,
+    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_E,    KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 )
 
 };
 
 
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
+  switch (keycode) {
     case APW:
-        if (record->event.pressed) {
-            // when keycode APW is pressed
-            SEND_STRING("youknowwhatthisis!");
-        } else {
-            // when keycode APW is released
-            // N O T H I N G
-        }
-        break;
-    }
-    return true;
-};
+      if (record->event.pressed) {
+          // when keycode APW is pressed
+          SEND_STRING("youknowwhatthisis!");
+      }
+      return false;
+      break;
+    case COLEMAK:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_BL);
+      }
+      return false;
+      break;
+    case RSTHD:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_RSTHD);
+      }
+      return false;
+      break;
+  }
+  return true;
+}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _RAISE, _DEVSET);
