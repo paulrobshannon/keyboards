@@ -4,11 +4,11 @@
 
 enum planck_layers {
   _BL,
+  _RSTHD,
   _LOWER,
   _RAISE,
   _DEVSET,
-  _MEDIA,
-  _RSTHD
+  _MEDIA
 };
 
 enum custom_keycodes {
@@ -16,6 +16,12 @@ enum custom_keycodes {
 };
 
 
+#define _BL     0
+#define _RSTHD  1
+#define _LOWER  2
+#define _RAISE  3
+#define _DEVSET 4
+#define _MEDIA  5
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
@@ -44,6 +50,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_LSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
+/* RSTHD Layer :S
+ * ,-----------------------------------------------------------------------------------.
+ * | Tab  |   J  |   C  |   Y  |   F  |   K  |   Z  |   L  |   ,  |   U  |   Q  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Bksp |   R  |   S  |   T  |   H  |   D  |   M  |   N  |   A  |   I  |   O  |  "   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|   /  |   V  |   G  |   P  |   B  |   X  |   W  |   .  |   ;  |   -  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Esc  | Ctrl | Alt  | GUI  |Lower |   E  |Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_RSTHD] = LAYOUT_planck_grid(
+    KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_BSPC,
+    KC_BSPC, KC_R,    KC_S,    KC_T,    KC_H,    KC_D,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT,
+    KC_LSFT, KC_SLSH, KC_V,    KC_G,    KC_P,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_SCLN, KC_MINS, KC_ENT ,
+    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_E,    KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+),
+
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |      |  1!  |  2@  |  3£  |  4$  |  5%  |  6^  |  7&  |  8*  |  9(  |  0)  | Bksp |
@@ -61,7 +85,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, KC_P1,   KC_P2, KC_P3,   _______, _______, 
     _______, _______, _______, _______, _______, _______, _______, _______, KC_P0, KC_DOT,  _______, _______
 ),
-
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
@@ -117,24 +140,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_VOLD,    KC_VOLU,  KC_MUTE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_BRID,    KC_BRIU,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP, KC_MS_RIGHT
-),
-
-/* RSTHD Layer :S
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   J  |   C  |   Y  |   F  |   K  |   Z  |   L  |   ,  |   U  |   Q  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Bksp |   R  |   S  |   T  |   H  |   D  |   M  |   N  |   A  |   I  |   O  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   /  |   V  |   G  |   P  |   B  |   X  |   W  |   .  |   ;  |   -  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  | Ctrl | Alt  | GUI  |Lower |   E  |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_RSTHD] = LAYOUT_planck_grid(
-    KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_BSPC,
-    KC_BSPC, KC_R,    KC_S,    KC_T,    KC_H,    KC_D,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT, KC_SLSH, KC_V,    KC_G,    KC_P,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_SCLN, KC_MINS, KC_ENT ,
-    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_E,    KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 )
 
 };
