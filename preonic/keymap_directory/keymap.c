@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+﻿#include QMK_KEYBOARD_H
 #include "muse.h"
 
 
@@ -13,8 +13,7 @@ enum preonic_layers {
 
 enum custom_keycodes {
   APW = SAFE_RANGE,
-  COLEMAK,
-  RSTHD
+  SHRUG
 };
 
 
@@ -34,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base Layer Colemak :D
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * | SHRUG|      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -46,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_preonic_grid(
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    SHRUG,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
@@ -103,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |Reset |Debug |      | APW  |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |Colemk|      |      |RSTHD |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |Mus on|Musoff|      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -113,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DEVSET] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, RESET,   DEBUG,   _______, APW,     _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, COLEMAK, _______, _______, RSTHD,   _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______,  MU_ON,  MU_OFF,  _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
@@ -138,31 +137,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP, KC_MS_RIGHT
 )
 
-
-// ,
-
-
-/* RSTHD Layer :S
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   J  |   C  |   Y  |   F  |   K  |   Z  |   L  |   ,  |   U  |   Q  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Bksp |   R  |   S  |   T  |   H  |   D  |   M  |   N  |   A  |   I  |   O  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   /  |   V  |   G  |   P  |   B  |   X  |   W  |   .  |   ;  |   -  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  | Ctrl | Alt  | GUI  |Lower |   E  |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-// [_RSTHD] = LAYOUT_preonic_grid(
-//     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-//     KC_TAB,  KC_J,    KC_C,    KC_Y,    KC_F,    KC_K,    KC_Z,    KC_L,    KC_COMM, KC_U,    KC_Q,    KC_BSPC,
-//     KC_BSPC, KC_R,    KC_S,    KC_T,    KC_H,    KC_D,    KC_M,    KC_N,    KC_A,    KC_I,    KC_O,    KC_QUOT,
-//     KC_LSFT, KC_SLSH, KC_V,    KC_G,    KC_P,    KC_B,    KC_X,    KC_W,    KC_DOT,  KC_SCLN, KC_MINS, KC_ENT ,
-//     KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_E,    KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-// )
-
 };
 
 
@@ -171,25 +145,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case APW:
       if (record->event.pressed) {
           // when keycode APW is pressed
-          SEND_STRING("youknowwhatthisis!");
+          SEND_STRING("youknowwhatthisis");
       } else {
           // when keycode APW is released
           // N O T H I N G
       }
+			return false;
+			break;
+		case SHRUG: // ¯\_(ツ)_/¯
+      if (record->event.pressed) {
+          send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+      }
       return false;
       break;
-    // case COLEMAK:
-    //   if (record->event.pressed) {
-    //     set_single_persistent_default_layer(_BL);
-    //   }
-    //   return false;
-    //   break;
-    // case RSTHD:
-    //   if (record->event.pressed) {
-    //     set_single_persistent_default_layer(_RSTHD);
-    //   }
-    //   return false;
-    //   break;
   }
   return true;
 }
@@ -201,4 +169,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   // more layer combos can go here as state = update_tri_...
   return state;
 }
+
+void matrix_init_user(void) {
+  set_unicode_input_mode(UC_OSX);
+};
 
