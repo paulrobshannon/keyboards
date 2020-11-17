@@ -7,13 +7,13 @@ enum preonic_layers {
   _LOWER,
   _RAISE,
   _DEVSET,
-  _MEDIA,
-  _RSTHD
+  _MEDIA
 };
 
 enum custom_keycodes {
   APW = SAFE_RANGE,
-  SHRUG
+  SHRUG,
+  TFLIP
 };
 
 
@@ -22,7 +22,6 @@ enum custom_keycodes {
 #define _RAISE  2
 #define _DEVSET 3
 #define _MEDIA  4
-#define _RSTHD  5
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
@@ -45,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_preonic_grid(
-    SHRUG,    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    SHRUG,   TFLIP,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
@@ -152,9 +151,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
 			return false;
 			break;
-		case SHRUG: // ¯\_(ツ)_/¯
+	case SHRUG: // ¯\_(ツ)_/¯
       if (record->event.pressed) {
-          send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+          //send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+          send_unicode_string("¯\\_(ツ)_v¯");
+          
+      }
+      return false;
+      break;
+    case TFLIP:
+      if (record->event.pressed) {
+          send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻");
       }
       return false;
       break;
@@ -169,8 +176,4 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   // more layer combos can go here as state = update_tri_...
   return state;
 }
-
-void matrix_init_user(void) {
-  set_unicode_input_mode(UC_OSX);
-};
 
