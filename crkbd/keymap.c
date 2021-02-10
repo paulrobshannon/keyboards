@@ -19,6 +19,7 @@ extern uint8_t is_master;
 #define _NAV 4
 #define NAVSPACE LT(_NAV, KC_SPC)
 #define NAV MO(_NAV)
+#define SHFT_BS LSFT_T(KC_BSPC)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -42,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,   KC_Z,   KC_X,    KC_C,    KC_V,   KC_B,                          KC_K,   KC_M,   KC_COMM,  KC_DOT, KC_SLSH, KC_ENT, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,  LOWER, KC_BSPC,     KC_SPC,  RAISE,   NAV    \
+                                          KC_LGUI,  LOWER, SHFT_BS,    KC_SPC,  RAISE,   NAV    \
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,  KC_1,    KC_2,    KC_3,  XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, LOWER,   KC_LSFT,     KC_0 ,  RAISE,  KC_RALT \
+                                          KC_LGUI, LOWER,  SHFT_BS,     KC_0 ,  RAISE,  KC_RALT \
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_GRV,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  KC_QUES, XXXXXXX,\
   //|----------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LGUI,   LOWER, KC_LSFT,    KC_SPC,  RAISE,  KC_RALT \
+                                            KC_LGUI,   LOWER, SHFT_BS,    KC_SPC,  RAISE,  KC_RALT \
                                         //`--------------------------'  `--------------------------'
   ),
 
@@ -79,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI, LOWER,   KC_LSFT,    KC_SPC,  RAISE, KC_RALT \
+                                         KC_LGUI, LOWER,   SHFT_BS,    KC_SPC,  RAISE, KC_RALT \
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_LSFT, _______, _______, _______, _______,  _______,                     KC_UP,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI,   LOWER, KC_LSFT,    KC_SPC,  RAISE,   KC_RALT \
+                                         KC_LGUI,   LOWER, SHFT_BS,    KC_SPC,  RAISE,   KC_RALT \
                                       //`--------------------------'  `--------------------------'
   ),
 };
