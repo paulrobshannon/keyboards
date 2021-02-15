@@ -20,6 +20,10 @@ extern uint8_t is_master;
 #define NAVSPACE LT(_NAV, KC_SPC)
 #define NAV MO(_NAV)
 #define SHFT_BS LSFT_T(KC_BSPC)
+#define BACK LALT(KC_LEFT)
+#define FORWRD LALT(KC_RGHT)
+#define START LGUI(KC_LEFT)
+#define END LGUI(KC_RGHT)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -86,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     XXXXXXX, _______, _______, _______,  _______, _______,                     KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+     XXXXXXX, _______, FORWRD,  _______,  END,     _______,                     KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, START,   XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, KC_LCTL, KC_LALT, KC_LGUI,  _______, _______,                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,\
+     XXXXXXX, KC_LCTL, KC_LALT, KC_LGUI,  _______, _______,                     KC_LEFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, _______, _______, _______, _______,  _______,                     KC_UP,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,\
+     KC_LSFT, _______, _______, _______,  _______, BACK   ,                     KC_UP,   XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          KC_LGUI,   LOWER, SHFT_BS,    KC_SPC,  RAISE,   KC_RALT \
                                       //`--------------------------'  `--------------------------'
