@@ -22,9 +22,16 @@ enum custom_keycodes {
 #define _RAISE  2
 #define _DEVSET 3
 #define _MEDIA  4
+#define _NAV    5
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
+#define NAV_LFT LT(_NAV, KC_LEFT)
+#define SHFT_BS LSFT_T(KC_BSPC)
+#define BACK LALT(KC_LEFT)
+#define FORWRD LALT(KC_RGHT)
+#define START LGUI(KC_LEFT)
+#define END LGUI(KC_RGHT)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -32,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base Layer Colemak :D
  * ,-----------------------------------------------------------------------------------.
- * | SHRUG|      |      |      |      |      |      |      |      |      |      |      |
+ * |SHRUG |TFLIP |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -48,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_LSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   SHFT_BS, KC_SPC,  RAISE,   NAV_LFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Lower
@@ -134,6 +141,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_VOLD,    KC_VOLU,  KC_MUTE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,    KC_BRID,    KC_BRIU,  _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_LEFT, KC_MS_DOWN, KC_MS_UP, KC_MS_RIGHT
+),
+
+/* Nav Layer
+ * 
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------| 
+ * |      |      |Forwrd|      | End  |      | Down |Right |      |      |Start |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      | CTRL | LALT |  CMD |      |      | Left |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      | Back |  Up  |      | Left | Down |  Up  |Right |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NAV] = LAYOUT_preonic_grid(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, FORWRD,  _______, END,     _______, KC_DOWN, KC_RGHT, _______, _______, START,   _______,
+    _______, KC_LCTL, KC_LALT, KC_LGUI, _______, _______, KC_LEFT, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, BACK,    KC_UP,   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 
 };

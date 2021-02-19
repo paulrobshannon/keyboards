@@ -10,6 +10,9 @@
                                 }
 #endif
 
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 200
+
 /*
  * MIDI options
  */
