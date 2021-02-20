@@ -19,28 +19,20 @@
 
 enum planck_layers {
   _BL,
-  _RSTHD,
   _LOWER,
   _RAISE,
   _DEVSET,
-  _MEDIA
+  _NAV
 };
-
-enum custom_keycodes {
-  APW
-};
-
 
 #define _BL     0
 #define _LOWER  1
 #define _RAISE  2
 #define _DEVSET 3
-#define _MEDIA  4
-#define _NAV    5
+#define _NAV    4
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define NAV MO(_NAV)
-#define MEDIA MO(_MEDIA)
 #define NAV_LFT LT(_NAV, KC_LEFT)
 #define SHFT_BS LSFT_T(KC_BSPC)
 #define SPC_LYR LT(_RAISE, KC_SPC)
@@ -60,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |        |  CMD  |  Lwr  | Backspace & Layer | Space & Raise |  NAV  |      |       |
+     * |        |  CMD  |  Lwr  | Backspace & Shift | Space & Raise |  NAV  |      |       |
      * `-----------------------------------------------------------------------------------'
      */
     [_BL] = LAYOUT_ortho_4x12_2x225u(
@@ -82,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [_LOWER] = LAYOUT_ortho_4x12_2x225u(
-        MEDIA,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,  KC_9,    KC_0,    KC_BSPC, 
+        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,  KC_9,    KC_0,    KC_BSPC, 
         _______, _______, _______, _______, _______, _______, _______, KC_P4,   KC_P5, KC_P6,   _______, _______, 
         _______, _______, _______, _______, _______, _______, _______, KC_P1,   KC_P2, KC_P3,   _______, _______, 
         _______, _______, _______,          _______,          KC_P0,                   _______, _______, _______
