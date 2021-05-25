@@ -17,7 +17,6 @@ extern uint8_t is_master;
 #define _RAISE 2
 #define _ADJUST 3
 #define _NAV 4
-#define NAVSPACE LT(_NAV, KC_SPC)
 #define NAV MO(_NAV)
 #define SHFT_BS LSFT_T(KC_BSPC)
 #define RAISE_ENT LT(_RAISE, KC_ENT)
