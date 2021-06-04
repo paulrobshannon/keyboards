@@ -52,6 +52,14 @@ enum custom_keycodes {
 #define START LGUI(KC_LEFT)
 #define END LGUI(KC_RGHT)
 
+/* homerow mod def, for more concise keycodes below */
+#define CTL_R LCTL_T(KC_R)
+#define ALT_S LALT_T(KC_S) 
+#define CMD__T LGUI_T(KC_T) /* qmk did not like CMD_T */
+#define CMD_N RGUI_T(KC_N)
+#define ALT_E RALT_T(KC_E)
+#define CTL_I RCTL_T(KC_I)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -68,10 +76,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_NLCK, KC_P7,   KC_P8,   KC_P9,   KC_HOME,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_INS,  KC_P4,   KC_P5,   KC_P6,   KC_PGUP,  KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,  KC_P1,   KC_P2,   KC_P3,   KC_PGDN,  KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   SHFT_BS, KC_EQL,  KC_NO,   KC_P0,   KC_DOT,  KC_RBRC,  KC_SPC,  RAISE,   NAV_LFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+    KC_BSPC, KC_A,    CTL_R,   ALT_S,   CMD__T,  KC_D,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_H,    CMD_N,   ALT_E,   CTL_I,   KC_O,    KC_QUOT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    KC_ESC,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   SHFT_BS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SPC,  RAISE,   NAV_LFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 

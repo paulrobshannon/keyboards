@@ -1,0 +1,120 @@
+/*
+Since our quirky block definitions are basically a list of comma separated
+arguments, we need a wrapper in order for these definitions to be
+expanded before being used as arguments to the LAYOUT_xxx macro.
+*/
+
+/*
+Blocks for each of the four major keyboard layouts
+Organized so we can quickly adapt and modify all of them
+at once, rather than for each keyboard, one at a time.
+And this allows for much cleaner blocks in the keymaps.
+For instance Tap/Hold for Control on all of the layouts
+NOTE: These are all the same length.  If you do a search/replace
+  then you need to add/remove underscores to keep the
+  lengths consistent.
+*/
+
+
+
+#define ________________BLANK_5_COL________________       _______, _______, _______, _______, _______
+#define _____________NUMBER_LEFT_5_COL_____________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
+#define _____________NUMBER_RIGHT_5_COL____________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
+
+
+#define _______________BASE_L1_5_COL_______________       KC_Q,    KC_W,         KC_F,         KC_P,         KC_G
+#define _______________BASE_L2_5_COL_______________       KC_A,    LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), KC_D
+#define _______________BASE_L3_5_COL_______________       KC_Z,    KC_X,         KC_C,         KC_V,         KC_B
+
+#define _______________BASE_R1_5_COL_______________       KC_J,    KC_L,         KC_U,         KC_Y,         KC_SCLN
+#define _______________BASE_R2_5_COL_______________       KC_H,    RGUI_T(KC_N), RALT_T(KC_E), RCTL_T(KC_I), KC_O
+#define _______________BASE_R3_5_COL_______________       KC_K,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH
+
+
+
+#define ______________LOWER_L1_5_COL_______________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
+#define ______________LOWER_L2_5_COL_______________       ___________________BLANK___________________
+#define ______________LOWER_L3_5_COL_______________       ___________________BLANK___________________
+
+#define ______________LOWER_R1_5_COL_______________       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
+#define ______________LOWER_R2_5_COL_______________       _______, KC_4,    KC_5,    KC_6,    _______
+#define ______________LOWER_R3_5_COL_______________       _______, KC_1,    KC_2,    KC_3,    _______
+
+
+
+#define ______________RAISE_L1_5_COL_______________       KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC 
+#define ______________RAISE_L2_5_COL_______________       _______, KC_PLUS, KC_EQL,  KC_LPRN, KC_LBRC   
+#define ______________RAISE_L3_5_COL_______________       ___________________BLANK___________________
+
+#define ______________RAISE_R1_5_COL_______________       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN
+#define ______________RAISE_R2_5_COL_______________       KC_RBRC, KC_RPRN, KC_MINS, KC_UNDS, _______
+#define ______________RAISE_R3_5_COL_______________       _______, _______, KC_COMM, KC_DOT,  KC_QUES
+
+
+
+#define _______________NAV_L1_5_COL________________       _______, LALT(KC_RGHT), _______, LGUI(KC_RGHT), _______
+#define _______________NAV_L2_5_COL________________       ___________________BLANK___________________
+#define _______________NAV_L3_5_COL________________       _______, _______,       _______, _______,       LALT(KC_LEFT)
+
+#define _______________NAV_R1_5_COL________________       _______, _______,       _______, _______,       LGUI(KC_LEFT)
+#define _______________NAV_R2_5_COL________________       ___________________BLANK___________________
+#define _______________NAV_R3_5_COL________________       _______, KC_LEFT,       KC_DOWN, KC_UP,         KC_RGHT
+
+
+
+#define _______________BASE_L1_6_COL_______________       KC_TAB,  _______________BASE_L1_5_COL_______________
+#define _______________BASE_L2_6_COL_______________       KC_BSPC, _______________BASE_L2_5_COL_______________
+#define _______________BASE_L3_6_COL_______________       KC_LSFT, _______________BASE_L3_5_COL_______________
+
+#define _______________BASE_R1_6_COL_______________       _______________BASE_R1_5_COL_______________, KC_BSPC
+#define _______________BASE_R2_6_COL_______________       _______________BASE_R2_5_COL_______________, KC_QUOT
+#define _______________BASE_R3_6_COL_______________       _______________BASE_R3_5_COL_______________, KC_ENT
+
+
+
+#define ______________LOWER_L1_6_COL_______________       KC_ESC,  ______________LOWER_L1_5_COL_______________
+#define ______________LOWER_L2_6_COL_______________       _______, ______________LOWER_L2_5_COL_______________
+#define ______________LOWER_L3_6_COL_______________       _______, ______________LOWER_L3_5_COL_______________
+
+#define ______________LOWER_R1_6_COL_______________       ______________LOWER_R1_5_COL_______________, _______
+#define ______________LOWER_R2_6_COL_______________       ______________LOWER_R2_5_COL_______________, _______
+#define ______________LOWER_R3_6_COL_______________       ______________LOWER_R3_5_COL_______________, _______
+
+
+
+#define ______________RAISE_L1_6_COL_______________       LALT(KC_3), ______________RAISE_L1_5_COL_______________
+#define ______________RAISE_L2_6_COL_______________       _______,    ______________RAISE_L2_5_COL_______________
+#define ______________RAISE_L3_6_COL_______________       KC_GRV,     ______________RAISE_L3_5_COL_______________
+
+#define ______________RAISE_R1_6_COL_______________       ______________RAISE_R1_5_COL_______________, _______
+#define ______________RAISE_R2_6_COL_______________       ______________RAISE_R2_5_COL_______________, KC_BSLS
+#define ______________RAISE_R3_6_COL_______________       ______________RAISE_R3_5_COL_______________, _______
+
+
+
+#define _______________NAV_L1_6_COL________________       _______, _______________NAV_L1_5_COL________________
+#define _______________NAV_L2_6_COL________________       _______, _______________NAV_L2_5_COL________________
+#define _______________NAV_L3_6_COL________________       _______, _______________NAV_L3_5_COL________________
+
+#define _______________NAV_R1_6_COL________________       _______, _______________NAV_R1_5_COL________________
+#define _______________NAV_R2_6_COL________________       _______, _______________NAV_R2_5_COL________________
+#define _______________NAV_R3_6_COL________________       _______, _______________NAV_R3_5_COL________________
+
+
+
+#define _______________BASE_L1_12_COL_______________      _______________BASE_L1_6_COL_________________, _______________BASE_R1_6_COL________________
+#define _______________BASE_L2_12_COL_______________      _______________BASE_L2_6_COL_________________, _______________BASE_R2_6_COL________________
+#define _______________BASE_L3_12_COL_______________      _______________BASE_L3_6_COL_________________, _______________BASE_R3_6_COL________________
+
+#define ______________LOWER_L1_12_COL_______________      ______________LOWER_L1_6_COL_________________, ______________LOWER_R1_6_COL________________
+#define ______________LOWER_L2_12_COL_______________      ______________LOWER_L2_6_COL_________________, ______________LOWER_R2_6_COL________________
+#define ______________LOWER_L3_12_COL_______________      ______________LOWER_L3_6_COL_________________, ______________LOWER_R3_6_COL________________
+
+#define ______________RAISE_L1_12_COL_______________      ______________RAISE_L1_6_COL_________________, ______________RAISE_R1_6_COL________________
+#define ______________RAISE_L2_12_COL_______________      ______________RAISE_L2_6_COL_________________, ______________RAISE_R2_6_COL________________
+#define ______________RAISE_L3_12_COL_______________      ______________RAISE_L3_6_COL_________________, ______________RAISE_R3_6_COL________________
+
+#define _______________NAV_L1_12_COL________________      _______________NAV_L1_6_COL__________________, _______________NAV_R1_6_COL_________________
+#define _______________NAV_L2_12_COL________________      _______________NAV_L2_6_COL__________________, _______________NAV_R2_6_COL_________________
+#define _______________NAV_L3_12_COL________________      _______________NAV_L3_6_COL__________________, _______________NAV_R3_6_COL_________________
+
