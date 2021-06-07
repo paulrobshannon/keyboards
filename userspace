@@ -1,20 +1,6 @@
-/*
-Since our quirky block definitions are basically a list of comma separated
-arguments, we need a wrapper in order for these definitions to be
-expanded before being used as arguments to the LAYOUT_xxx macro.
-*/
 
-/*
-Blocks for each of the four major keyboard layouts
-Organized so we can quickly adapt and modify all of them
-at once, rather than for each keyboard, one at a time.
-And this allows for much cleaner blocks in the keymaps.
-For instance Tap/Hold for Control on all of the layouts
-NOTE: These are all the same length.  If you do a search/replace
-  then you need to add/remove underscores to keep the
-  lengths consistent.
-*/
-
+/* Centralised place for paulrobshannon's keymap changes */
+/* TODO: bottom rows on lower, raise and nav */
 
 
 #define ________________BLANK_5_COL________________       _______, _______, _______, _______, _______
@@ -27,8 +13,15 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _______________BASE_L3_5_COL_______________       KC_Z,    KC_X,         KC_C,         KC_V,         KC_B
 
 #define _______________BASE_R1_5_COL_______________       KC_J,    KC_L,         KC_U,         KC_Y,         KC_SCLN
-#define _______________BASE_R2_5_COL_______________       KC_H,    RGUI_T(KC_N), RALT_T(KC_E), RCTL_T(KC_I), KC_O
+#define _______________BASE_R2_5_COL_______________       KC_H,    uKC_O
 #define _______________BASE_R3_5_COL_______________       KC_K,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH
+
+
+
+#define ___________CORNE_THUMB_CLUSTER_L___________       KC_LGUI,  MO(_LOWER),         LSFT_T(KC_BSPC)
+#define ___________CORNE_THUMB_CLUSTER_R___________       KC_SPC,   LT(_RAISE, KC_ENT), MO(_NAV)
+#define _______________BASE_L4_6_COL_______________       KC_NO,   KC_NO,   KC_NO,   ___________CORNE_THUMB_CLUSTER_L___________
+#define _______________BASE_R4_6_COL_______________       ___________CORNE_THUMB_CLUSTER_L___________, KC_NO,   KC_NO,   KC_NO
 
 
 
@@ -102,19 +95,21 @@ NOTE: These are all the same length.  If you do a search/replace
 
 
 
-#define _______________BASE_L1_12_COL_______________      _______________BASE_L1_6_COL_________________, _______________BASE_R1_6_COL________________
-#define _______________BASE_L2_12_COL_______________      _______________BASE_L2_6_COL_________________, _______________BASE_R2_6_COL________________
-#define _______________BASE_L3_12_COL_______________      _______________BASE_L3_6_COL_________________, _______________BASE_R3_6_COL________________
 
-#define ______________LOWER_L1_12_COL_______________      ______________LOWER_L1_6_COL_________________, ______________LOWER_R1_6_COL________________
-#define ______________LOWER_L2_12_COL_______________      ______________LOWER_L2_6_COL_________________, ______________LOWER_R2_6_COL________________
-#define ______________LOWER_L3_12_COL_______________      ______________LOWER_L3_6_COL_________________, ______________LOWER_R3_6_COL________________
+#define ______________BASE_L1_12_COL_______________      _______________BASE_L1_6_COL_______________, _______________BASE_R1_6_COL_______________
+#define ______________BASE_L2_12_COL_______________      _______________BASE_L2_6_COL_______________, _______________BASE_R2_6_COL_______________
+#define ______________BASE_L3_12_COL_______________      _______________BASE_L3_6_COL_______________, _______________BASE_R3_6_COL_______________
+#define ______________BASE_L4_12_COL_______________      _______________BASE_L4_6_COL_______________, _______________BASE_R4_6_COL_______________
 
-#define ______________RAISE_L1_12_COL_______________      ______________RAISE_L1_6_COL_________________, ______________RAISE_R1_6_COL________________
-#define ______________RAISE_L2_12_COL_______________      ______________RAISE_L2_6_COL_________________, ______________RAISE_R2_6_COL________________
-#define ______________RAISE_L3_12_COL_______________      ______________RAISE_L3_6_COL_________________, ______________RAISE_R3_6_COL________________
+#define _____________LOWER_L1_12_COL_______________      ______________LOWER_L1_6_COL_______________, ______________LOWER_R1_6_COL_______________
+#define _____________LOWER_L2_12_COL_______________      ______________LOWER_L2_6_COL_______________, ______________LOWER_R2_6_COL_______________
+#define _____________LOWER_L3_12_COL_______________      ______________LOWER_L3_6_COL_______________, ______________LOWER_R3_6_COL_______________
 
-#define _______________NAV_L1_12_COL________________      _______________NAV_L1_6_COL__________________, _______________NAV_R1_6_COL_________________
-#define _______________NAV_L2_12_COL________________      _______________NAV_L2_6_COL__________________, _______________NAV_R2_6_COL_________________
-#define _______________NAV_L3_12_COL________________      _______________NAV_L3_6_COL__________________, _______________NAV_R3_6_COL_________________
+#define _____________RAISE_L1_12_COL_______________      ______________RAISE_L1_6_COL_______________, ______________RAISE_R1_6_COL_______________
+#define _____________RAISE_L2_12_COL_______________      ______________RAISE_L2_6_COL_______________, ______________RAISE_R2_6_COL_______________
+#define _____________RAISE_L3_12_COL_______________      ______________RAISE_L3_6_COL_______________, ______________RAISE_R3_6_COL_______________
+
+#define ______________NAV_L1_12_COL________________      _______________NAV_L1_6_COL________________, _______________NAV_R1_6_COL________________
+#define ______________NAV_L2_12_COL________________      _______________NAV_L2_6_COL________________, _______________NAV_R2_6_COL________________
+#define ______________NAV_L3_12_COL________________      _______________NAV_L3_6_COL________________, _______________NAV_R3_6_COL________________
 

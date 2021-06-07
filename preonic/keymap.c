@@ -27,11 +27,21 @@ enum custom_keycodes {
 #define RAISE MO(_RAISE)
 #define MEDIA MO(_MEDIA)
 #define NAV_LFT LT(_NAV, KC_LEFT)
+#define NAV MO(_NAV)
 #define SHFT_BS LSFT_T(KC_BSPC)
 #define BACK LALT(KC_LEFT)
 #define FORWRD LALT(KC_RGHT)
 #define START LGUI(KC_LEFT)
 #define END LGUI(KC_RGHT)
+
+/* homerow mod def, for more concise keycodes below */
+#define CTL_R LCTL_T(KC_R)
+#define ALT_S LALT_T(KC_S) 
+#define CMD__T LGUI_T(KC_T) /* qmk did not like CMD_T */
+#define CMD_N RGUI_T(KC_N)
+#define ALT_E RALT_T(KC_E)
+#define CTL_I RCTL_T(KC_I)
+
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -39,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Base Layer Colemak :D
  * ,-----------------------------------------------------------------------------------.
- * |SHRUG |TFLIP |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -47,15 +57,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  | Ctrl | Alt  | GUI  |Lower |Shift |Space |Raise | Left | Down |  Up  |Right |
+ * | Esc  | Ctrl | Alt  | GUI  |Lower |Shift |Space |Raise | Nav  |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_preonic_grid(
     _______, _______,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     KC_TAB,  KC_Q,      KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_BSPC, KC_A,      KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
+    KC_BSPC, KC_A,      CTL_R,   ALT_S,   CMD__T,  KC_D,    KC_H,    CMD_N,   ALT_E,   CTL_I,   KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,      KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_ESC,  KC_LCTL,   KC_LALT, KC_LGUI, LOWER,   SHFT_BS, KC_SPC,  RAISE,   NAV_LFT, KC_DOWN, KC_UP,   KC_RGHT
+    KC_ESC,  KC_LCTL,   KC_LALT, KC_LGUI, LOWER,   SHFT_BS, KC_SPC,  RAISE,   NAV,     KC_NO,   KC_NO,   KC_NO
 ),
 
 /* Lower
