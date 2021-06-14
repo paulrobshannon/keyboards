@@ -10,9 +10,6 @@
                                 }
 #endif
 
-#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 200
-
 /*
  * MIDI options
  */
@@ -40,3 +37,6 @@
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
 
+#define TAPPING_TOGGLE 2
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT  
