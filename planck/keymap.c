@@ -10,9 +10,9 @@ enum planck_layers {
   _MEDIA
 };
 
-enum custom_keycodes {
-  APW
-};
+// enum custom_keycodes {
+//   APW
+// };
 
 
 #define _BL     0
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  | Ctrl | Alt  | GUI  |Lower |BS & S|Space |Raise |Nv & L| Down |  Up  |Right |
+ * | Esc  | Ctrl | Alt  | GUI  |Lower |BS & S|Space |Raise |  Nav |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_planck_grid(
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |  1!  |  2@  |  3£  |  4$  |  5%  |  6^  |  7&  |  8*  |  9(  |  0)  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |      |      |      |      |      |      |  4   |  5   |  6   |      |      |
+ * |      |      |      |      |      |      |      |  4   |  5   |  6   |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |  1   |  2   |  3   |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Dev & Settings (Lower + Raise)
  * 
  * ,-----------------------------------------------------------------------------------.
- * |      |Reset |Debug |      | APW  |      |      |      |      |      |      |      |
+ * |      |Reset |Debug |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_DEVSET] = LAYOUT_planck_grid(
-    _______, RESET,   DEBUG,   _______, APW,     _______, _______, _______, _______,  _______, _______, _______,
+    _______, RESET,   DEBUG,   _______, _______,     _______, _______, _______, _______,  _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
     _______, _______, _______,  MU_ON,  MU_OFF,  _______, _______, _______, _______,  _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
@@ -159,17 +159,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case APW:
-      if (record->event.pressed) {
-          // when keycode APW is pressed
-          SEND_STRING("youknowwhatthisis!");
-      }
-      break;
-  }
-  return true;
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   switch (keycode) {
+//     case APW:
+//       if (record->event.pressed) {
+//           // when keycode APW is pressed
+//           SEND_STRING("youknowwhatthisis!");
+//       }
+//       break;
+//   }
+//   return true;
+// }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _RAISE, _DEVSET);
