@@ -1,3 +1,17 @@
+Note on flashing, make sure to define the side of the board when flashing for the first time. This is due to the flipped controller on the RHS reversing the keymap matrix. 
+
+``` bash
+make ferris/sweep:default:avrdude-split-left
+make ferris/sweep:default:avrdude-split-right
+```
+
+
+
+
+THIS IS THE DEFAULT README BELOW
+==============================================
+
+
 A usable default keymap for the Ferris keyboard
 ===============================================
 
