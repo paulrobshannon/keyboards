@@ -39,3 +39,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 
 #define EE_HANDS
+
+#ifdef COMBO_ENABLE
+#define COMBO_COUNT 5
+#define COMBO_TERM 200
+#endif
