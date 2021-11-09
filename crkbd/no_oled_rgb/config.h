@@ -37,6 +37,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT
 // #define PERMISSIVE_HOLD
 
+#ifdef COMBO_ENABLE
+#define COMBO_COUNT 5
+#define COMBO_TERM 200
+#endif
+
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
     #define RGBLIGHT_ANIMATIONS
