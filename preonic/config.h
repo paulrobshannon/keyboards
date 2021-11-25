@@ -10,12 +10,6 @@
                                 }
 #endif
 
-#define MUSIC_MASK (keycode != KC_NO)
-
-#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 200   
-#define IGNORE_MOD_TAP_INTERRUPT                             
-
 /*
  * MIDI options
  */
@@ -39,5 +33,15 @@
 
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
-//
-#define UNICODE_SELECTED_MODES UC_MAC
+
+// Most tactile encoders have detents every 4 stages
+#define ENCODER_RESOLUTION 4
+
+#define TAPPING_TOGGLE 2
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT  
+
+#ifdef COMBO_ENABLE
+#define COMBO_COUNT 5
+#define COMBO_TERM 200
+#endif
